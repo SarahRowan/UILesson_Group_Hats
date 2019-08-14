@@ -19,9 +19,12 @@ public class GameManager : MonoBehaviour
     private Node node7;
     private Node node8;
 
-    // references to the main and button text gameobjects, to update their texts 
-    public GameObject mainText;
+
+	// references to the main and button text gameobjects, to update their texts 
+	public GameObject mainText;
 	public GameObject leftButtonText;
+	public GameObject rightButtonText;
+
 
 	// Start is called before the first frame update
     void Start()
@@ -56,6 +59,7 @@ public class GameManager : MonoBehaviour
 		currentNode = newNode;
 		mainText.GetComponent<Text>().text = currentNode.mainText;
 		leftButtonText.GetComponent<Text>().text = currentNode.leftOption;
+		rightButtonText.GetComponent<Text>().text = currentNode.rightOption;
 	}
 
 	// This method is called when the left button is clicked. 
@@ -68,5 +72,16 @@ public class GameManager : MonoBehaviour
 			Debug.Log("updating...");
 		}
 		else{ Debug.Log("no node available"); }
+	}
+
+    public void ClickRight()
+	{
+		Debug.Log("Right Node Clicked!");
+        if(currentNode.rightNode != null)
+		{
+			UpdateText(currentNode.rightNode);
+            Debug.Log("updating...")
+		}
+        else { Debug.Log("no node available"); }
 	}
 }
